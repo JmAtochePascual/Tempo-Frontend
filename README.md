@@ -77,8 +77,8 @@ Antes de ejecutar el proyecto, asegúrate de tener instalado:
 ### 1. Clonar el repositorio
 
 ```bash
-git clone https://github.com/TU_USUARIO/TU_REPOSITORIO.git
-cd TU_REPOSITORIO/frontend
+git clone https://github.com/JmAtochePascual/Tempo-Frontend.git
+cd Tempo-Frontend
 ```
 
 ### 2. Instalar dependencias
@@ -112,8 +112,8 @@ Si deseas contribuir al proyecto, sigue estos pasos:
 1. Haz un Fork del repositorio:
 
 ```bash
-git clone https://github.com/TU_USUARIO/TU_REPOSITORIO.git
-cd TU_REPOSITORIO/frontend
+git clone https://github.com/JmAtochePascual/Tempo-Frontend.git
+cd Tempo-Frontend
 ```
 
 2. Crea una nueva rama:
