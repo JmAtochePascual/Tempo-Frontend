@@ -1,4 +1,4 @@
-# Documentación del Frontend
+# Tempo del Frontend
 
 Este es el frontend de la aplicación **Tempo**, una interfaz moderna y responsive construida con **Vite**, **React**, **TypeScript** y **Tailwind CSS**. Este proyecto está diseñado para consumir la API del backend de Tempo, proporcionando una experiencia de usuario fluida y segura para la autenticación y gestión de usuarios.
 
