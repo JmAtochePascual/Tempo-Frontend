@@ -1,5 +1,17 @@
 import { z } from "zod";
 
+// Schema to register
+export const authRegisterSchema = z.object({
+  name: z.string().min(3, { message: "El nombre es requerido" }),
+  email: z.string().email({ message: "Ingrese un correo electrónico válido" }),
+  password: z.string().min(8, { message: "Ingrese una contraseña válida" }),
+  confirmPassword: z.string()
+    .min(8, { message: "La confirmación de la contraseña es requerida" })
+}).refine((data) => data.password === data.confirmPassword, {
+  message: "Las contraseñas no coinciden",
+  path: ["confirmPassword"],
+});
+
 
 // Schema to login
 export const authLoginSchema = z.object({
@@ -11,6 +23,8 @@ export const authLoginSchema = z.object({
 export const authResponseMessage = z.object({
   message: z.string(),
 });
+
+export type TAuthRegister = z.infer<typeof authRegisterSchema>
 
 export type TAuthLogin = z.infer<typeof authLoginSchema>
 

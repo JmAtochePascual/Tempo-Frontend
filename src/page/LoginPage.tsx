@@ -24,6 +24,7 @@ const LoginPage = () => {
     }
   })
 
+  // Handle login
   const handleLogin = (fromData: TAuthLogin) => mutate(fromData)
 
   return (
