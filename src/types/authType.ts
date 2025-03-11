@@ -44,3 +44,21 @@ export type TUser = Pick<TAuthRegister, "name">
 export type TAuthLink = { to: string; text: string; strongText: string; }
 
 export type TAuthLinks = TAuthLink[];
+
+
+// API USER RAMDOM
+export type TApiUser = {
+  name: {
+    first: string;
+    last: string;
+  };
+  email: string;
+  phone: string;
+  login: {
+    uuid: string;
+  };
+};
+
+export type TApiUsers = {
+  results: TApiUser[];
+};

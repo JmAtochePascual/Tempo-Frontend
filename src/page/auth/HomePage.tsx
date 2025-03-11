@@ -2,12 +2,13 @@
 import { keepPreviousData, useQuery } from "@tanstack/react-query"
 import { getUsers } from "../../services/apiService"
 import { useState } from "react";
+import { TApiUser, TApiUsers } from "../../types/authType";
 
 const HomePage = () => {
   const [page, setPage] = useState(1);
   const totalPages = 10; // Estimamos que hay 10 páginas en total
 
-  const { data, isLoading, isError } = useQuery({
+  const { data, isLoading, isError } = useQuery<TApiUsers>({
     queryKey: ["getUsers", page],
     queryFn: () => getUsers({ page, results: 10 }),
     placeholderData: keepPreviousData,
@@ -30,7 +31,7 @@ const HomePage = () => {
             </tr>
           </thead>
           <tbody>
-            {data?.results.map((user: any) => (
+            {data?.results.map((user: TApiUser) => (
               <tr key={user.login.uuid} className="text-center">
                 <td className="border border-gray-600 p-2">{user.name.first}</td>
                 <td className="border border-gray-600 p-2">{user.name.last}</td>
