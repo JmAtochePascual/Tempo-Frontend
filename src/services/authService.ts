@@ -1,5 +1,5 @@
 import { isAxiosError } from "axios";
-import { TAuthLogin, TAuthRegister, TAuthResponseMessage } from "../types/authType";
+import { TAuthLogin, TAuthProfile, TAuthRegister, TAuthResponseMessage } from "../types/authType";
 import { api } from "../config/axios";
 
 
@@ -27,5 +27,19 @@ export const authLogin = async (user: TAuthLogin) => {
     }
 
     throw new Error("Ocurrió un error al intentar iniciar sesión");
+  }
+}
+
+// Get current user
+export const authProfile = async () => {
+  try {
+    const { data } = await api.get<TAuthProfile>("/auth/profile");
+    return data;
+  } catch (error) {
+    if (isAxiosError(error) && error.response) {
+      throw new Error(error.response.data.message);
+    }
+
+    throw new Error("Ocurrió un error al intentar obtener la perfil");
   }
 }

@@ -19,6 +19,13 @@ export const authLoginSchema = z.object({
   password: z.string().min(8, { message: "Ingrese una contraseña válida" }),
 })
 
+// Schema to get profile
+export const authProfileSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  email: z.string().email(),
+})
+
 // Schema to get response message
 export const authResponseMessage = z.object({
   message: z.string(),
@@ -28,7 +35,11 @@ export type TAuthRegister = z.infer<typeof authRegisterSchema>
 
 export type TAuthLogin = z.infer<typeof authLoginSchema>
 
+export type TAuthProfile = z.infer<typeof authProfileSchema>
+
 export type TAuthResponseMessage = z.infer<typeof authResponseMessage>
+
+export type TUser = Pick<TAuthRegister, "name">
 
 export type TAuthLink = { to: string; text: string; strongText: string; }
 
