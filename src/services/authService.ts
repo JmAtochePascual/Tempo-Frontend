@@ -43,3 +43,17 @@ export const authProfile = async () => {
     throw new Error("Ocurrió un error al intentar obtener la perfil");
   }
 }
+
+// Logout user
+export const authLogout = async () => {
+  try {
+    const { data } = await api.post<TAuthResponseMessage>("/auth/logout");
+    return data.message;
+  } catch (error) {
+    if (isAxiosError(error) && error.response) {
+      throw new Error(error.response.data.message);
+    }
+
+    throw new Error("Ocurrió un error al intentar cerrar la sesión");
+  }
+}

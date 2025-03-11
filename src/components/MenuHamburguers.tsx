@@ -1,13 +1,32 @@
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate, } from "react-router-dom"
 import { Bars3Icon } from "@heroicons/react/24/solid"
 import { TUser } from "../types/authType"
+import { useMutation, useQueryClient } from "@tanstack/react-query"
+import { authLogout } from "../services/authService"
+import { toast } from "react-toastify"
 
 type MenuHamburguersProps = {
   name: TUser['name']
 }
 
 const MenuHamburguers = ({ name }: MenuHamburguersProps) => {
+  const queryClient = useQueryClient();
+  const navigate = useNavigate();
+
+  // Mutation to logout user
+  const { mutate } = useMutation({
+    mutationFn: authLogout,
+    onError: (error) => {
+      toast.error(error.message);
+    },
+    onSuccess: () => {
+      queryClient.clear();
+      navigate("/auth/login");
+    }
+  });
+
+  const handleClose = () => mutate()
 
   return (
     <div>
@@ -28,6 +47,7 @@ const MenuHamburguers = ({ name }: MenuHamburguersProps) => {
           <MenuItem>
             <Link
               to="/"
+              onClick={handleClose}
               className="p-1 text-black font-semibold rounded-md hover:bg-primary/25">
               Cerar Sesión
             </Link>
