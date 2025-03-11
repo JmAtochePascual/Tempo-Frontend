@@ -22,7 +22,7 @@ const AppLayout = () => {
         <Outlet />
       </main>
 
-      <footer className="absolute bottom-0 w-full pt-10">
+      <footer className=" bottom-0 w-full pt-10">
         <div className="w-11/12 max-w-7xl mx-auto py-5 text-center">
           <p className="text-white">
             <span className="font-bold">JMCode</span> | ©{new Date().getFullYear()} - Transformando ideas en realidad 💚
